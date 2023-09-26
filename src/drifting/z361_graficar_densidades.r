@@ -49,7 +49,7 @@ graficar_campo <- function(campo) {
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 # Aqui comienza el programa
-setwd("~/buckets/b1/") # Establezco el Working Directory
+setwd("~/devel/itba-fcastaneda/dm2023b/buckets/b1") # Establezco el Working Directory
 
 # cargo el dataset donde voy a entrenar
 dataset <- fread("./datasets/dataset_pequeno.csv")

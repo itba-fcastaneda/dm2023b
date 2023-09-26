@@ -20,7 +20,7 @@ PARAM$input$dataset <- "./datasets/dataset_pequeno.csv"
 PARAM$input$training <- c(202107) # meses donde se entrena el modelo
 PARAM$input$future <- c(202109) # meses donde se aplica el modelo
 
-PARAM$finalmodel$semilla <- 102191
+PARAM$finalmodel$semilla <- 800089
 
 PARAM$finalmodel$num_iterations <- 559
 PARAM$finalmodel$learning_rate <- 0.0100746999
@@ -34,7 +34,7 @@ PARAM$finalmodel$max_bin <- 31
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 # Aqui empieza el programa
-setwd("~/buckets/b1")
+setwd("~/devel/itba-fcastaneda/dm2023b/buckets/b1/")
 
 # cargo el dataset donde voy a entrenar
 dataset <- fread(PARAM$input$dataset, stringsAsFactors = TRUE)
@@ -68,7 +68,7 @@ dir.create(paste0("./exp/", PARAM$experimento, "/"), showWarnings = FALSE)
 # Establezco el Working Directory DEL EXPERIMENTO
 setwd(paste0("./exp/", PARAM$experimento, "/"))
 
-
+dataset [ train==1L, clase_ternaria:=sample(clase_ternaria)]
 
 # dejo los datos en el formato que necesita LightGBM
 dtrain <- lgb.Dataset(

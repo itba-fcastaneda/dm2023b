@@ -12,19 +12,23 @@ setwd("~/devel/itba-fcastaneda/dm2023b/buckets/b1") # Establezco el Working Dire
 # cargo el dataset
 dataset <- fread("./datasets/dataset_pequeno.csv")
 
+
+
 dtrain <- dataset[foto_mes == 202107] # defino donde voy a entrenar
+#dtrain [, clase_ternaria:=sample(clase_ternaria)]
+
 dapply <- dataset[foto_mes == 202109] # defino donde voy a aplicar el modelo
 
 # genero el modelo,  aqui se construye el arbol
 # quiero predecir clase_ternaria a partir de el resto de las variables
 modelo <- rpart(
-        formula = "clase_ternaria ~ .",
+        formula = "cliente_edad ~ . -numero_de_cliente -cliente_antiguedad -Visa_fechaalta",
         data = dtrain, # los datos donde voy a entrenar
         xval = 0,
-        cp = -0.2814968353, # esto significa no limitar la complejidad de los splits
+        cp = -1, # esto significa no limitar la complejidad de los splits
         minsplit = 1161, # minima cantidad de registros para que se haga el split
-        minbucket = 8, # tamaño minimo de una hoja
-        maxdepth = 5
+        minbucket = 10, # tamaño minimo de una hoja
+        maxdepth = 4
 ) # profundidad maxima del arbol
 
 

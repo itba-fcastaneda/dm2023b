@@ -22,15 +22,15 @@ kBO_iter <- 100
 
 # la letra L al final de 1L significa ENTERO
 hs <- makeParamSet(
-  makeNumericParam("cp", lower = -1, upper = 0.1),
-  makeIntegerParam("minsplit", lower = 1L, upper = 8000L),
-  makeIntegerParam("minbucket", lower = 1L, upper = 4000L),
-  makeIntegerParam("maxdepth", lower = 3L, upper = 20L),
+  makeNumericParam("cp", lower = -1, upper = 0),
+  makeIntegerParam("minsplit", lower = 1L, upper = 10000L),
+  makeIntegerParam("minbucket", lower = 1L, upper = 5000L),
+  makeIntegerParam("maxdepth", lower = 1L, upper = 20L),
   forbidden = quote(minbucket > 0.5 * minsplit)
 )
 # minbuket NO PUEDE ser mayor que la mitad de minsplit
 
-ksemilla_azar <- 102191 # cambiar por la primer semilla
+ksemilla_azar <- 800161 # cambiar por la primer semilla
 
 #------------------------------------------------------------------------------
 # graba a un archivo los componentes de lista
@@ -179,7 +179,7 @@ EstimarGanancia <- function(x) {
 # Aqui empieza el programa
 
 # Establezco el Working Directory
-setwd("~/buckets/b1/")
+setwd("~/devel/itba-fcastaneda/dm2023b/buckets/b1")
 
 # cargo los datos
 dataset <- fread("./datasets/dataset_pequeno.csv")
@@ -189,11 +189,11 @@ dataset <- dataset[clase_ternaria != ""]
 
 # creo la carpeta LOCAL donde va el experimento
 #  HT  representa  Hiperparameter Tuning
-dir.create("~/exp/", showWarnings = FALSE)
-dir.create("~/exp/HT3210/", showWarnings = FALSE)
+dir.create("~/devel/itba-fcastaneda/dm2023b/buckets/b1/exp/", showWarnings = FALSE)
+dir.create("~/devel/itba-fcastaneda/dm2023b/buckets/b1/exp/HT3210/", showWarnings = FALSE)
 
 # Establezco el Working Directory LOCAL del experimento
-setwd("~/exp/HT3210/")
+setwd("~/devel/itba-fcastaneda/dm2023b/buckets/b1/exp/HT3210/")
 
 
 archivo_log <- "HT321.txt"
@@ -252,10 +252,3 @@ if (!file.exists(archivo_BO)) {
   run <- mboContinue(archivo_BO)
 }
 # retomo en caso que ya exista
-
-# creo la carpeta del experimento en el bucket
-dir.create("~/buckets/b1/exp/", showWarnings = FALSE)
-dir.create("~/buckets/b1/exp/HT3210/", showWarnings = FALSE)
-
-# copio los archivos
-system( "cp -r ~/exp/HT3210/*  ~/buckets/b1/exp/HT3210" )

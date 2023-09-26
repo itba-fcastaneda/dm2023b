@@ -14,14 +14,14 @@ PARAM <- list()
 PARAM$experimento <- 3210
 
 # Establezco la semilla aleatoria, cambiar por SU primer semilla
-PARAM$semilla <- 102191
+PARAM$semilla <- 800161
 
 # parameetros rpart
 PARAM$rpart_param <- list(
   "cp" = -1,
-  "minsplit" = 300,
-  "minbucket" = 20,
-  "maxdepth" = 10
+  "minsplit" = 250,
+  "minbucket" = 100,
+  "maxdepth" = 14
 )
 
 # parametros  arbol
@@ -35,7 +35,8 @@ PARAM$num_trees_max <- 500
 #------------------------------------------------------------------------------
 # Aqui comienza el programa
 
-setwd("~/buckets/b1/") # Establezco el Working Directory
+
+setwd("~/devel/itba-fcastaneda/dm2023b/buckets/b1/")
 
 # cargo los datos
 dataset <- fread("./datasets/dataset_pequeno.csv")
@@ -52,7 +53,7 @@ setwd(carpeta_experimento)
 
 
 # que tamanos de ensemble grabo a disco, pero siempre debo generar los 500
-grabar <- c(1, 5, 10, 50, 100, 200, 500)
+grabar <- c(500)
 
 
 # defino los dataset de entrenamiento y aplicacion
