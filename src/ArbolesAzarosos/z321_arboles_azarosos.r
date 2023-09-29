@@ -14,7 +14,7 @@ PARAM <- list()
 PARAM$experimento <- 3210
 
 # Establezco la semilla aleatoria, cambiar por SU primer semilla
-PARAM$semilla <- 800161
+PARAM$semilla <- 800149
 
 # parameetros rpart
 PARAM$rpart_param <- list(
@@ -26,10 +26,10 @@ PARAM$rpart_param <- list(
 
 # parametros  arbol
 # entreno cada arbol con solo 50% de las variables variables
-PARAM$feature_fraction <- 0.5
+PARAM$feature_fraction <- 0.1
 # voy a generar 500 arboles, a mas arboles mas tiempo de proceso y MEJOR MODELO
 #  pero ganancias marginales
-PARAM$num_trees_max <- 500
+PARAM$num_trees_max <- 50
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ setwd(carpeta_experimento)
 
 
 # que tamanos de ensemble grabo a disco, pero siempre debo generar los 500
-grabar <- c(500)
+grabar <- c(50)
 
 
 # defino los dataset de entrenamiento y aplicacion
