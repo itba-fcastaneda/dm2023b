@@ -19,7 +19,7 @@ require("lightgbm")
 PARAM <- list()
 PARAM$experimento <- "FE6310-04"
 
-PARAM$exp_input <- "TS6410-04"
+PARAM$exp_input <- "DR6210"
 
 PARAM$lag1 <- TRUE
 PARAM$lag2 <- TRUE
