@@ -48,12 +48,12 @@ PARAM$RandomForest$min.node.size <- 1000
 PARAM$RandomForest$mtry <- 40
 PARAM$RandomForest$semilla <- 800161 # cambiar por la propia semilla
 
-PARAM$experimento <- "FE6310-14"
+PARAM$experimento <- "FE6310-16"
 PARAM$exp_input <- "DR6210"
 # varia de 0.0 a 2.0, si es 0.0 NO se activan
-PARAM$CanaritosAsesinos$ratio <- 3
+PARAM$CanaritosAsesinos$ratio <- 2.75
 # desvios estandar de la media, para el cutoff
-PARAM$CanaritosAsesinos$desvios <- 3.0
+PARAM$CanaritosAsesinos$desvios <- 4.0
 # cambiar por la propia semilla
 PARAM$CanaritosAsesinos$semilla <- 800161
 
