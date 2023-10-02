@@ -17,7 +17,6 @@ require("lightgbm")
 
 # Parametros del script
 PARAM <- list()
-PARAM$experimento <- "FE6310-13"
 
 PARAM$exp_input <- "DR6210"
 
@@ -51,7 +50,7 @@ PARAM$RandomForest$min.node.size <- 1000
 PARAM$RandomForest$mtry <- 40
 PARAM$RandomForest$semilla <- 800161 # cambiar por la propia semilla
 
-
+PARAM$experimento <- "FE6310-13"
 # varia de 0.0 a 2.0, si es 0.0 NO se activan
 PARAM$CanaritosAsesinos$ratio <- 2.75
 # desvios estandar de la media, para el cutoff
