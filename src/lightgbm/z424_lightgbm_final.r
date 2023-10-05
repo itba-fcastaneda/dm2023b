@@ -27,14 +27,12 @@ PARAM$finalmodel$learning_rate <- 0.0100746999
 PARAM$finalmodel$feature_fraction <- 0.5144127527
 PARAM$finalmodel$min_data_in_leaf <- 505
 PARAM$finalmodel$num_leaves <- 44
-
-
 PARAM$finalmodel$max_bin <- 31
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 # Aqui empieza el programa
-setwd("~/devel/itba-fcastaneda/dm2023b/buckets/b1/")
+setwd("~/buckets/b1/")
 
 # cargo el dataset donde voy a entrenar
 dataset <- fread(PARAM$input$dataset, stringsAsFactors = TRUE)
