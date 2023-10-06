@@ -340,16 +340,13 @@ fganancia_lgbm_meseta <- function(probs, datos) {
 
 GVEZ <- 1
 
-CanaritosAsesinos <- function(
+Boruta <- function(
     canaritos_ratio = 0.2,
     canaritos_desvios = 3.0, canaritos_semilla = 999983) {
   gc()
   dataset[, clase01 := ifelse(clase_ternaria == "CONTINUA", 0, 1)]
 
   set.seed(canaritos_semilla, kind = "L'Ecuyer-CMRG")
-  for (i in 1:(ncol(dataset) * canaritos_ratio)) {
-    dataset[, paste0("canarito", i) := runif(nrow(dataset))]
-  }
 
   campos_buenos <- setdiff(
     colnames(dataset),
