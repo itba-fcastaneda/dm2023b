@@ -13,7 +13,7 @@ require("ranger")
 require("randomForest") # solo se usa para imputar nulos
 
 require("lightgbm")
-
+require("Boruta")
 
 # Parametros del script
 PARAM <- list()
