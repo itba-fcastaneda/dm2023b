@@ -41,7 +41,7 @@ set.seed(boruta_semilla, kind = "L'Ecuyer-CMRG")
 azar <- runif(nrow(dataset))
 
 dataset[, entrenamiento :=
-             as.integer(foto_mes >= 202101 & foto_mes <= 202103 &
+             as.integer(foto_mes >= 202101 & foto_mes <= 202102 &
                           (clase01 == 1 | azar < 0.10))]
 
 campos_buenos <- setdiff(
