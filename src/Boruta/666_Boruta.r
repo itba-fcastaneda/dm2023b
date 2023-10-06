@@ -2,11 +2,21 @@ library(Boruta)
 require("data.table")
 require("randomForest")
 
+PARAM$experimento <- "FE6310-boruta-01-small"
+
 setwd( "~/buckets/b1/")
 boruta_semilla = 800161
 
+OUTPUT <- list()
+
 # dataset_input <- paste0("./exp/", PARAM$exp_input, "/dataset.csv.gz")
 dataset_input <- paste0("./datasets/dataset_pequeno.csv")
+
+
+############################################################
+GrabarOutput <- function() {
+  write_yaml(OUTPUT, file = "output.yml") # grabo OUTPUT
+}
 
 dataset <- fread(dataset_input)
 colnames(dataset)[which(!(sapply(dataset, typeof) %in% c("integer", "double")))]
@@ -15,6 +25,8 @@ colnames(dataset)[which(!(sapply(dataset, typeof) %in% c("integer", "double")))]
 
 dataset[, clase01 := ifelse(clase_ternaria == "CONTINUA", 0, 1)]
 set.seed(boruta_semilla, kind = "L'Ecuyer-CMRG")
+
+
 
 campos_buenos <- setdiff(
   colnames(dataset),
@@ -40,5 +52,19 @@ boruta.train <- Boruta(
   clase01~. ,
   data = dtrain,
 )
+
+# creo la carpeta donde va el experimento
+dir.create(paste0("./exp/", PARAM$experimento, "/"), showWarnings = FALSE)
+# Establezco el Working Directory DEL EXPERIMENTO
+setwd(paste0("./exp/", PARAM$experimento, "/"))
+
+boruta_attrs <- getSelectedAttributes(boruta_train, withTentative = FALSE)
+
+boruta_fixed <- TentativeRoughFix(boruta.bank_train)
+
+OUTPUT$boruta_attrs <- boruta_attrs
+OUTPUT$boruta_fixed <- boruta_fixed
+GrabarOutput()
+
 
 
