@@ -17,7 +17,7 @@ gc(full = TRUE) # garbage collection
 PARAM <- list()
 PARAM$seed <- 800161
 
-PARAM$experimento <- "FE6310-Boruta-small"
+PARAM$experimento <- "local-Boruta-small-10"
 
 #PARAM$exp_input <- "exp/DR6210"
 #PARAM$dataset_file <- "/dataset.csv.gz"
@@ -61,8 +61,8 @@ GrabarOutput( output_file )
 ## CARGO DATASET
 dataset <- fread(dataset_input)
 
-cols_actuales <- ncol(dataset)
-OUTPUT$cols_init <- cols_actuales
+
+OUTPUT$cols_init <- ncol(dataset)
 
 ## PREPARACION DATASET
 
@@ -71,7 +71,7 @@ dataset[, clase01 := ifelse(clase_ternaria == "CONTINUA", 0, 1)]
 # campos sobre los que vamos a hacer en entrenamiento
 campos_buenos <- setdiff(
   colnames(dataset),
-  c("clase_ternaria", "foto_mes")
+  c("clase_ternaria", "foto_mes", "numero_de_cliente" )
 )
 
 # Armo una lista auxiliar para el under sampling clase00
@@ -85,17 +85,17 @@ dataset[, entrenamiento :=
 # Imputo los nulos
 dtrain = na.roughfix(dataset[entrenamiento==TRUE, ..campos_buenos])
 
-for(i in c(15)) {
+for(i in seq(55,100,5)) {
   boruta_out <- Boruta(clase01~.,data=dtrain, doTrace=2, maxRuns=i)
-
+  
   fwrite(
     as.list(getSelectedAttributes(boruta_out)),
-    file = paste0( "attributes_", i ),
+    file = paste0( output_folder , "attributes_", i ,".txt" ),
     sep = "\n"
   )
-
-  jpeg( paste0( "bp_iter_", i ) )
-  plot( boruta_out )
+  
+  jpeg( paste0( output_folder , "plot_", i ,".jpeg" ) , width = 1024, height = 800 )
+  plot( boruta_out , )
   dev.off()
 }
 

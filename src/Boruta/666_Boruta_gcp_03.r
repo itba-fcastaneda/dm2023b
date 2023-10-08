@@ -21,15 +21,17 @@ GrabarOutput <- function() {
   write_yaml(OUTPUT, file = "output.yml") # grabo OUTPUT
 }
 
-# creo la carpeta donde va el experimento
-dir.create(paste0("./exp/", PARAM$experimento, "/"), showWarnings = FALSE)
-# Establezco el Working Directory DEL EXPERIMENTO
-setwd(paste0("./exp/", PARAM$experimento, "/"))
+
 
 ############################################################
 
 dataset <- fread(dataset_input)
 colnames(dataset)[which(!(sapply(dataset, typeof) %in% c("integer", "double")))]
+
+# creo la carpeta donde va el experimento
+dir.create(paste0("./exp/", PARAM$experimento, "/"), showWarnings = FALSE)
+# Establezco el Working Directory DEL EXPERIMENTO
+setwd(paste0("./exp/", PARAM$experimento, "/"))
 
 OUTPUT$PARAM <- PARAM
 OUTPUT$time$start <- format(Sys.time(), "%Y%m%d %H%M%S")
