@@ -12,8 +12,8 @@ options(error = function() {
 # primeros pasos, relativamente rapidos
 # source("~/dm2023b/src/workflow-inicial/611_CA_reparar_dataset_02.r")
 # source("~/dm2023b/src/workflow-inicial/621_DR_corregir_drifting_02.r")
- source("~/dm2023b/src/workflow-inicial/631_FE_historia_canario_01.r")
-source("~/dm2023b/src/workflow-inicial/641_TS_training_strategy_canario_01.r")
+source("~/dm2023b/src/workflow-inicial/631_FE_historia_canario_01.r")
+source("~/dm2023b/src/workflow-inicial/641_TS_training_canario_01.r")
 
 # ultimos pasos, muy lentos
 source("~/dm2023b/src/workflow-inicial/651_HT_lightgbm_canario_01.r")
