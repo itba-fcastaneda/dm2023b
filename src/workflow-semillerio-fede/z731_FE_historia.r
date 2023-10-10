@@ -27,7 +27,7 @@ PARAM$experimento <- "FE7310-last-00"
 PARAM$exp_input  <- "DR7210-last-00"
 
 PARAM$lag1  <- TRUE
-PARAM$lag2  <- TRUE
+PARAM$lag2  <- FALSE
 PARAM$lag3  <- FALSE
 
 PARAM$Tendencias1$run  <- TRUE
@@ -54,11 +54,11 @@ PARAM$RandomForest$num.trees  <- 20
 PARAM$RandomForest$max.depth  <-  4
 PARAM$RandomForest$min.node.size  <- 1000
 PARAM$RandomForest$mtry  <- 40
-PARAM$RandomForest$semilla  <- 102191    # cambiar por la propia semilla
+PARAM$RandomForest$semilla  <- 800161    # cambiar por la propia semilla
 
-PARAM$CanaritosAsesinos$ratio  <- 0.0        #varia de 0.0 a 2.0, si es 0.0 NO se activan
-PARAM$CanaritosAsesinos$desvios  <- 4.0      #desvios estandar de la media, para el cutoff
-PARAM$CanaritosAsesinos$semilla  <- 200177   # cambiar por la propia semilla
+PARAM$CanaritosAsesinos$ratio  <- 2       #varia de 0.0 a 2.0, si es 0.0 NO se activan
+PARAM$CanaritosAsesinos$desvios  <- 2.03      #desvios estandar de la media, para el cutoff
+PARAM$CanaritosAsesinos$semilla  <- 800161   # cambiar por la propia semilla
 
 PARAM$home  <- "~/buckets/b1/"
 # FIN Parametros del script
