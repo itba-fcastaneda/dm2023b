@@ -17,6 +17,6 @@ source("~/dm2023b/src/workflow-semillerio-fede/z741_TS_training_strategy-last-00
 
 # ultimos pasos, muy lentos
 source("~/dm2023b/src/workflow-semillerio-fede/z751_HT_lightgbm-last-00.r")
-source("~/dm2023b/src/workflow-semillerio-fede/z795_ZZ_final-last-00.r")
+source("~/dm2023b/src/workflow-semillerio-fede/z795_ZZ_final_semillerio-last-00.r")
 source("~/dm2023b/src/workflow-semillerio-fede/z796_HB_semillerios_hibridacion-last-00.r")
 
