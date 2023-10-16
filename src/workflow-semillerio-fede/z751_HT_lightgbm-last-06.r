@@ -76,11 +76,15 @@ PARAM$lgb_basicos <- list(
 
 #Aqui se cargan los hiperparametros que se optimizan en la Bayesian Optimization
 PARAM$bo_lgb <- makeParamSet(
-         makeNumericParam("learning_rate",    lower=    0.02, upper=     0.3),
-         makeNumericParam("feature_fraction", lower=    0.01, upper=     1.0),
-         makeIntegerParam("num_leaves",       lower=    8L,   upper=  1024L),
-         makeIntegerParam("min_data_in_leaf", lower=  100L,   upper= 50000L)
-        )
+  makeNumericParam("bagging_fraction", lower = 0.0, upper = 1.0),
+  makeNumericParam("min_gain_to_split", lower = 0.0, upper = 1.0),
+  makeIntegerParam("bagging_freq", lower = 1L, upper = 50L),
+  makeNumericParam("sub_feature", lower = 0.0, upper = 1.0),
+  makeNumericParam("min_sum_hessian_in_leaf", lower = 0.0, upper = 10.0),
+  makeNumericParam("sacale_pos_weight", lower = 0.0, upper = 1.0),
+  makeIntegerParam("num_threads", lower = 1L, upper = 10L),
+  makeNumericParam("max_delta_step", lower = 0.0, upper = 1.0)
+)
 
 
 #si usted es ambicioso, y tiene paciencia, podria subir este valor a 100
